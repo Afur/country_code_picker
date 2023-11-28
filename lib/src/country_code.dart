@@ -27,6 +27,12 @@ class CountryCode {
 
   String get flagUri => 'flags/${code.toLowerCase()}.png';
 
+  Image flagImage({double width = 28}) => Image.asset(
+        flagUri,
+        package: 'country_code_picker',
+        width: width,
+      );
+
   CountryCode localize(BuildContext context) {
     return this..name = CountryLocalizations.of(context)?.translate(code) ?? name;
   }

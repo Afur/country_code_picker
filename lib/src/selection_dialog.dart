@@ -12,13 +12,13 @@ class SelectionDialog extends StatefulWidget {
   final String searchHint;
   final CountrySelectionMode countrySelectionMode;
 
-  const SelectionDialog(
-    this.favorites,
-    this.flagWidth,
-    this.searchIcon,
-    this.searchHint,
-    this.countrySelectionMode,
-  );
+  const SelectionDialog({
+    required this.favorites,
+    required this.flagWidth,
+    required this.searchIcon,
+    required this.searchHint,
+    required this.countrySelectionMode,
+  });
 
   @override
   State<StatefulWidget> createState() => _SelectionDialogState();
@@ -96,9 +96,11 @@ class _SelectionDialogState extends State<SelectionDialog> {
                 const Divider(),
                 if (_filteredElements.isEmpty)
                   Center(
-                    child: Text(CountryLocalizations.of(context)
-                            ?.translate('no_country') ??
-                        'No country found'),
+                    child: Text(
+                      CountryLocalizations.of(context)
+                              ?.translate('no_country') ??
+                          'No country found',
+                    ),
                   )
                 else
                   ..._filteredElements.map(
@@ -120,10 +122,12 @@ class _SelectionDialogState extends State<SelectionDialog> {
     final upper = query.toUpperCase();
     setState(() {
       _filteredElements = _elements
-          .where((e) =>
-              e.code.contains(upper) ||
-              e.dialCode.contains(upper) ||
-              e.name.toUpperCase().contains(upper))
+          .where(
+            (e) =>
+                e.code.contains(upper) ||
+                e.dialCode.contains(upper) ||
+                e.name.toUpperCase().contains(upper),
+          )
           .toList();
     });
   }

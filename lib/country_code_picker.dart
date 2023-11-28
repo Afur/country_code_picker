@@ -147,11 +147,11 @@ class CountryCodePickerState extends State<CountryCodePicker> {
       context: context,
       builder: (context) => Dialog(
         child: SelectionDialog(
-          favorites,
-          widget.flagWidth,
-          widget.searchIcon,
-          widget.searchHint,
-          CountrySelectionMode.dialCode,
+          favorites: favorites,
+          flagWidth: widget.flagWidth,
+          searchIcon: widget.searchIcon,
+          searchHint: widget.searchHint,
+          countrySelectionMode: CountrySelectionMode.dialCode,
         ),
       ),
     );

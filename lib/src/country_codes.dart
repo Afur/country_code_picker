@@ -1,3 +1,11 @@
+import 'package:country_code_picker/src/country_code.dart';
+
+class CountryCodes {
+  static List<CountryCode> getCountryCodes() {
+    return countryCodes.map((json) => CountryCode.fromJson(json)).toList();
+  }
+}
+
 const countryCodes = [
   {
     "name": "افغانستان",
