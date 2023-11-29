@@ -101,26 +101,28 @@ class CountryCodePickerState extends State<CountryCodePicker> {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: _showCountryCodePickerDialog,
-      child: Row(
-        children: [
-          Image.asset(
-            selectedItem.flagUri,
-            package: 'country_code_picker',
-            width: 14,
-            height: 7,
-          ),
-          const SizedBox(width: 4),
-          Text(
-            selectedItem.dialCode,
-            style: const TextStyle(
-              color: Color(0xFF090A0A),
-              fontSize: 13,
-              fontWeight: FontWeight.w400,
+    return Container(
+      child: InkWell(
+        onTap: _showCountryCodePickerDialog,
+        child: Row(
+          children: [
+            Image.asset(
+              selectedItem.flagUri,
+              package: 'country_code_picker',
+              width: 14,
+              height: 7,
             ),
-          ),
-        ],
+            const SizedBox(width: 4),
+            Text(
+              selectedItem.dialCode,
+              style: const TextStyle(
+                color: Color(0xFF090A0A),
+                fontSize: 13,
+                fontWeight: FontWeight.w400,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
