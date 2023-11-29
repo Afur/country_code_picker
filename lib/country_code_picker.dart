@@ -20,7 +20,6 @@ class CountryCodePicker extends StatefulWidget {
   final String searchHint;
   final Widget searchIcon;
   final ValueChanged<CountryCode> onInit;
-  final bool shouldShowArrow;
   final bool enabled;
 
   const CountryCodePicker({
@@ -32,7 +31,6 @@ class CountryCodePicker extends StatefulWidget {
     required this.searchIcon,
     required this.onInit,
     super.key,
-    this.shouldShowArrow = true,
     this.enabled = true,
   });
 
@@ -104,40 +102,25 @@ class CountryCodePickerState extends State<CountryCodePicker> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      borderRadius: BorderRadius.circular(8),
       onTap: _showCountryCodePickerDialog,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 12),
-        child: Row(
-          children: [
-            const SizedBox(width: 12),
-            Image.asset(
-              selectedItem.flagUri,
-              package: 'country_code_picker',
-              width: 28,
+      child: Row(
+        children: [
+          Image.asset(
+            selectedItem.flagUri,
+            package: 'country_code_picker',
+            width: 14,
+            height: 7,
+          ),
+          const SizedBox(width: 4),
+          Text(
+            selectedItem.dialCode,
+            style: const TextStyle(
+              color: Color(0xFF090A0A),
+              fontSize: 13,
+              fontWeight: FontWeight.w400,
             ),
-            const SizedBox(width: 4),
-            Text(
-              selectedItem.dialCode,
-              style: const TextStyle(
-                color: Color(0xFF090A0A),
-                fontSize: 16,
-                fontWeight: FontWeight.w400,
-              ),
-            ),
-            if (widget.shouldShowArrow)
-              const Column(
-                children: [
-                  Icon(
-                    Icons.keyboard_arrow_down,
-                    color: Color(0xFF090A0A),
-                    size: 24,
-                  ),
-                  SizedBox(width: 12),
-                ],
-              ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
